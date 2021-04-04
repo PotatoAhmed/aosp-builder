@@ -6,9 +6,20 @@ nproc
 cat /etc/os*
 env
 
-url=https://roms.apon77.workers.dev/ccache/ci2/ccache.tar.gz # Where cccahe is located, use your ones, from where you want to download ccache!
+url=https://rombuilder.elwakil.workers.dev/ccache/ci2/ccache.tar.gz # Where cccahe is located, use your ones, from where you want to download ccache!
 
 cd /tmp # Where to download cccahe
 time aria2c $url -x16 -s50 # Using aria2c for speed haha, ccache will be at /tmp/ccache.tar.gz since my file name is ccache.tar.gz
 time tar xf ccache.tar.gz  # Extract ccache so ci can use it
 rm -rf ccache.tar.gz # Remove unnecessary downloaded file, it will speed up the upload ccache process
+
+eval 'set +o history' 2>/dev/null || setopt HIST_IGNORE_SPACE 2>/dev/null
+ touch ~/.gitcookies
+ chmod 0600 ~/.gitcookies
+
+ git config --global http.cookiefile ~/.gitcookies
+
+ tr , \\t <<\__END__ >>~/.gitcookies
+.googlesource.com,TRUE,/,TRUE,2147483647,o,git-ahmedbasha243.gmail.com=1//03-LTCkSwea9aCgYIARAAGAMSNwF-L9Irvi561_XeLRyegWKqHJcsOEkauq-km8II3dkp61Z8icNhTkVvzv1EG97F2HmRRYMhKFM
+__END__
+eval 'set -o history' 2>/dev/null || unsetopt HIST_IGNORE_SPACE 2>/dev/null
