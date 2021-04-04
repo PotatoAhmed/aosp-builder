@@ -44,7 +44,6 @@ id=790560457 # Your telegram id
 
 # Let's compile by parts! Coz of ram issue!
 make api-stubs-docs || echo no problem
-make hiddenapi-lists-docs || echo no problem
 make system-api-stubs-docs || echo no problem
 make test-api-stubs-docs || echo no problem
 
