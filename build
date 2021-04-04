@@ -34,7 +34,7 @@ tg(){
  bot_api=1775754781:AAHzQdPCwilRxlB9CwGcqelvcy3igdr_H1c # Your tg bot api, dont use my one haha
  your_telegram_id=$1 # No need to touch 
  msg=$2 # No need to touch
- curl -s "https://api.telegram.org/bot$1775754781:AAHzQdPCwilRxlB9CwGcqelvcy3igdr_H1c/sendmessage" --data "text=$msg&chat_id=$790560457"
+ curl -s "https://api.telegram.org/bot${bot_api}/sendmessage" --data "text=$msg&chat_id=${your_telegram_id}"
 }
 
 id=790560457 # Your telegram id
@@ -48,7 +48,7 @@ make hiddenapi-lists-docs || echo no problem
 make system-api-stubs-docs || echo no problem
 make test-api-stubs-docs || echo no problem
 
-make bacon -j8 \
+make bacon -j10 \
  && send_zip=$(up out/target/product/mido/*zip) && tg $id "Build Succeed!
 $send_zip" \
  || tmate -S /tmp/tmate.sock new-session -d && tmate -S /tmp/tmate.sock wait tmate-ready && send_shell=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}') && tg $id "Build Failed" && tg $id "$send_shell" && ccache -s && sleep 2h
