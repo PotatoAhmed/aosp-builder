@@ -16,3 +16,6 @@ git clone https://github.com/AhmedElwakil2004/local_manifest_test.git --depth 1 
 
 # Sync source with -q, no need unnecessary messages, you can remove -q if want! try with -j30 first, if fails, it will try again with -j8
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j 30 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j 8
+
+#remove error
+rm -rf hardware/qcom/sdm845
